@@ -1,0 +1,44 @@
+@use "src/variables";
+
+.header {
+  width: 100%;
+  border-bottom: 1px solid variables.$light-gray;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .leftContent {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .logo {
+      width: 12rem;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+      li {
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: variables.$md) {
+    padding: 2rem;
+  }
+}
+
