@@ -1,10 +1,9 @@
-import TopBar from "./components/TopBar/TopBar.tsx";
+import {RouterProvider} from "react-router-dom";
+import {router} from "./routers";
 
 const App = () => {
   return (
-    <>
-      <TopBar/>
-    </>
+    <RouterProvider router={router}></RouterProvider>
   );
 };
 
