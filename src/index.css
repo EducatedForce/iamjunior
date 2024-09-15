@@ -1,3 +1,10 @@
+/*BREAKPOINTS
+xl: 1200px;
+lg: 992px;
+md: 768px;
+sm: 576px;
+*/
+
 * {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -25,6 +32,30 @@ time, mark, audio, video, hr {
     vertical-align: baseline;
 }
 
-body {
-    font-family: 'Roboto', system-ui, sans-serif;;
+html {
+    background: #FDFCFA;
 }
+
+body {
+    font-family: 'Roboto', system-ui, sans-serif;
+    color: #1B1212;
+}
+
+#root {
+    margin: auto;
+    max-width: 1000px;
+}
+
+@media screen and (max-width: 1200px) {
+    #root {
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #root {
+        max-width: 100%;
+    }
+}
+.active {}
+

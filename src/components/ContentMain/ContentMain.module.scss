@@ -1,0 +1,27 @@
+@use "../../lib/variables";
+
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 550px;
+  margin: 5rem auto;
+  padding: 0 1.5rem;
+
+  & .title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 4rem;
+
+    & span {
+      color: variables.$primary;
+    }
+  }
+
+  & p {
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+    color: variables.$text-light;
+  }
+}
+
+
