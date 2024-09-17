@@ -1,0 +1,11 @@
+@use "../../lib/variables";
+
+.badge {
+  background: variables.$purple-light;
+  color: variables.$primary;
+  font-weight: bold;
+  border-radius: 1.5rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+

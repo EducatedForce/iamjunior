@@ -4,5 +4,5 @@ export const routes = {
   about: "/about",
   login: "/login",
   signup: "/signup",
-  search: "/search/:category",
+  search: "/search",
 }

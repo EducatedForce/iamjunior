@@ -14,6 +14,15 @@ declare global {
     label: string;
     color: `#${string}`
   }
+  export type ServiceProps = {
+    id: string;
+    category: string;
+    vendor: string;
+    representative: string;
+    address: string;
+    imageUrl: string;
+  }
+
 }
 
 export {};
