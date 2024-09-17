@@ -43,19 +43,13 @@ body {
 
 #root {
     margin: auto;
-    max-width: 1000px;
-}
-
-@media screen and (max-width: 1200px) {
-    #root {
-        max-width: 80%;
-    }
+    width: 80%;
+    max-width: 1200px;
 }
 
 @media screen and (max-width: 768px) {
     #root {
-        max-width: 100%;
+        width: 100%;
     }
 }
-.active {}
 

@@ -22,9 +22,12 @@ const TopBar = () => {
             <li><NavLink to={routes.services}>Services</NavLink></li>
             <li><NavLink to={routes.about}>About Us</NavLink></li>
           </ul>
+          <div className={styles.loginSmallScreen}>
+            <Button/>
+          </div>
         </nav>
       </div>
-      <div>
+      <div className={styles.loginLargeScreen}>
         <Button/>
       </div>
     </header>

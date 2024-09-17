@@ -1,12 +1,12 @@
 import {createBrowserRouter} from "react-router-dom";
 import {routes} from "../lib/routes.ts";
 import HomePageLayout from "../layouts/HomePageLayout.tsx";
-import Home from "../routes/home/Home.tsx";
-import Services from "../routes/Services.tsx";
-import AboutUs from "../routes/AboutUs.tsx";
+import Home from "../pages/home/Home.tsx";
+import Services from "../pages/Services.tsx";
+import AboutUs from "../pages/AboutUs.tsx";
 import LoginPageLayout from "../layouts/LoginPageLayout.tsx";
-import Login from "../routes/Login.tsx";
-import SignUp from "../routes/SignUp.tsx";
+import Login from "../pages/Login.tsx";
+import SignUp from "../pages/SignUp.tsx";
 
 export const router = createBrowserRouter([
   {
