@@ -1,0 +1,24 @@
+@use "../../lib/variables";
+
+.container {
+  width: 100%;
+  max-width: 25rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+
+  & input {
+    flex: auto;
+    border: 1px solid variables.$light-gray;
+    border-radius: 1.1rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+
+    &:focus {
+      outline: 1px solid variables.$primary;
+    }
+  }
+}
