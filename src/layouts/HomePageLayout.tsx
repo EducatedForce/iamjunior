@@ -1,10 +1,10 @@
-import TopBar from "../components/TopBar/TopBar.tsx";
 import {Outlet} from "react-router-dom";
+import TopBar from "../components/TopBar/TopBar.tsx";
 
 const HomePageLayout = () => {
   return (
     <>
-      <TopBar loginButton/>
+      <TopBar/>
       <Outlet/>
     </>
   );

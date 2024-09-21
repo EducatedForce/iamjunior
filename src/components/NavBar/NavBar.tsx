@@ -1,19 +1,12 @@
 import styles from "./NavBar.module.scss";
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {routes} from "../../lib/routes.ts";
-import logo from "../../assets/logo.svg";
+import BrandLogo from "../BrandLogo/BrandLogo.tsx";
 
 const NavBar = () => {
   return (
     <div className={styles.navBarContainer}>
-      <Link to={routes.home}>
-        <div className={styles.logo}>
-          <img
-            src={logo}
-            alt="Logo"
-          />
-        </div>
-      </Link>
+      <BrandLogo/>
       <nav>
         <ul>
           <li><NavLink to={routes.home}>Home</NavLink></li>

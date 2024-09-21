@@ -1,10 +1,10 @@
 import {Outlet} from "react-router-dom";
-import TopBar from "../components/TopBar/TopBar.tsx";
+import TopBarAuth from "../components/TopBarAuth/TopBarAuth.tsx";
 
 const LoginPageLayout = () => {
   return (
     <>
-      <TopBar/>
+      <TopBarAuth/>
       <Outlet/>
     </>
   );

@@ -1,0 +1,11 @@
+@use "../../lib/variables";
+
+.authContainer {
+  padding: 2rem 0;
+  @media screen and (max-width: variables.$md) {
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

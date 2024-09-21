@@ -1,0 +1,8 @@
+.logo {
+  width: 12rem;
+
+  & img {
+    width: 100%;
+    object-fit: cover;
+  }
+}

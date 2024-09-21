@@ -4,7 +4,7 @@ import CategoryCard from "../CategoryCard/CategoryCard.tsx";
 
 const ContentMain = ({categories}: { categories: CategoryCardProps[] }) => {
   return (
-    <div className={styles.mainContainer}>
+    <div className={styles.contentMainContainer}>
       <section className={styles.searchBarContainer}>
         <h1 className={styles.title}>Find Home <span>Service/Repair</span> Near
           You</h1>

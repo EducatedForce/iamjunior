@@ -4,11 +4,14 @@
 .container {
   width: 100%;
   max-width: 25rem;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto;
   display: flex;
   gap: 1rem;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: variables.$md) {
+    gap: 0.75rem;
+  }
 
   & input {
     @include mixins.custom-input

@@ -1,5 +1,10 @@
 @use "../../lib/variables";
 
+@mixin active-card {
+  background: variables.$primary-light;
+  border-color: variables.$primary-lighter;
+}
+
 .categoryCard {
   display: flex;
   gap: 0.75rem;
@@ -62,13 +67,11 @@
     background: variables.$white;
 
     &:hover {
-      background: variables.$primary-light;
-      border-color: variables.$primary-lighter;
+      @include active-card;
     }
 
     &.active {
-      border: 2px solid variables.$primary-lighter;
-      background: variables.$primary-light;
+      @include active-card;
     }
 
     & .icon {

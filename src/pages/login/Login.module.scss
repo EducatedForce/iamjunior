@@ -1,5 +1,6 @@
 @use "../../lib/mixins";
 
-.mainContainer {
+
+.loginContainer {
   @include mixins.main-container;
 }

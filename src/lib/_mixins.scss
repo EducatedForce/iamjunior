@@ -2,11 +2,15 @@
 
 /*TYPOGRAPHY*/
 
+@mixin main-container {
+  margin: 5rem auto;
+}
+
 @mixin title-text {
   font-size: 1.5rem;
   font-weight: 800;
   line-height: 1.6;
-  margin: 1.5rem 0;
+  margin: 0 0 1.5rem 0;
 }
 
 @mixin subtitle-text {
