@@ -1,0 +1,13 @@
+@use "../../lib/variables";
+@use "../../lib/mixins";
+
+.aboutUsContainer {
+
+  & h2 {
+    @include mixins.title-text;
+  }
+
+  @media screen and (max-width: variables.$md) {
+    padding: 0 1.5rem;
+  }
+}

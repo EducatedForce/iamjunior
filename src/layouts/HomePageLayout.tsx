@@ -4,7 +4,7 @@ import {Outlet} from "react-router-dom";
 const HomePageLayout = () => {
   return (
     <>
-      <TopBar/>
+      <TopBar loginButton/>
       <Outlet/>
     </>
   );

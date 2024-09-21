@@ -3,16 +3,24 @@ import {useNavigate} from "react-router-dom";
 import {routes} from "../../lib/routes.ts";
 import {slugify} from "../../lib/slugify.ts";
 
-const CategoryCard = ({icon, label, color}: CategoryCardProps) => {
+const CategoryCard = ({
+                        icon,
+                        label,
+                        color,
+                        type = "primary",
+                        active = false
+                      }: CategoryCardProps) => {
 
   const navigate = useNavigate();
-  const handleClick = ()=>{
+  const handleClick = () => {
     navigate(`${routes.search}/${slugify(label)}`);
-  }
+  };
 
   return (
     <div
-      className={styles.categoryCard}
+      className={type === "primary"
+        ? `${styles.categoryCard} ${styles.primary}`
+        : `${styles.categoryCard} ${styles.secondary} ${active && styles.active}`}
       onClick={handleClick}
     >
       <div className={styles.icon} style={{color: color}}>

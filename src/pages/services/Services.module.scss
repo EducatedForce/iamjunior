@@ -1,0 +1,21 @@
+@use "../../lib/variables";
+@use "../../lib/mixins";
+
+.services {
+  & input {
+    margin-bottom: 2rem;
+    @include mixins.custom-input;
+  }
+
+  & h2 {
+    @include mixins.title-text;
+  }
+
+  & .servicesCards {
+    @include mixins.card-deck;
+  }
+
+  @media screen and (max-width: variables.$md){
+    padding: 0 1.5rem;
+  }
+}

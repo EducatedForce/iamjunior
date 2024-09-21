@@ -1,20 +1,13 @@
 import styles from './Button.module.scss';
-import {useNavigate} from "react-router-dom";
-import {routes} from "../../lib/routes.ts";
 
-const Button = () => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(routes.login);
-  };
+const Button = ({label, onClick}: ButtonProps) => {
 
   return (
     <button
       className={styles.btn}
-      onClick={handleClick}
+      onClick={onClick}
     >
-      Login/ Sign Up
+      {label}
     </button>
   );
 };
