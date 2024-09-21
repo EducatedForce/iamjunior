@@ -10,6 +10,11 @@
   background: variables.$primary;
   color: variables.$white;
   cursor: pointer;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    background: variables.$secondary;
+  }
 
   & .icon {
     font-size: 1.3rem;

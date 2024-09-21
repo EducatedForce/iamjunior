@@ -8,82 +8,19 @@
   justify-content: space-between;
   align-items: center;
 
-  & .leftContent {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-
-    & .logo {
-      width: 12rem;
-
-      & img {
-        width: 100%;
-        object-fit: cover;
-      }
-    }
-
-    & nav {
-      & ul {
-        display: flex;
-        list-style: none;
-        gap: 0.5rem;
-
-        & li {
-          font-size: 1.1rem;
-          font-weight: 600;
-          border: 1px solid transparent;
-          border-radius: variables.$radius;
-          cursor: pointer;
-          @media screen and (max-width: variables.$md){
-            text-align: center;
-          }
-
-
-          &:has(a:global(.active)) {
-            border: 1px solid variables.$primary;
-          }
-
-          &:hover {
-            border: 1px solid variables.$primary;
-          }
-
-          & a {
-            display: block;
-            padding: 0.5rem 1rem;
-            color: variables.$text-dark;
-            text-decoration: none;
-          }
-        }
-
-        @media screen and (max-width: variables.$md) {
-          flex-direction: column;
-        }
-      }
-    }
-
-    @media screen and (max-width: variables.$lg) {
-      flex-direction: column;
-    }
-  }
-
-  .loginSmallScreen {
-    display: block;
-    margin-top: 2rem;
-    @media screen and (min-width: variables.$md) {
-      display: none;
-    }
-  }
-
-  .loginLargeScreen {
-    display: block;
+  & .loginButton {
     @media screen and (max-width: variables.$md) {
-      display: none;
+      margin: auto;
     }
   }
 
   @media screen and (max-width: variables.$md) {
     padding: 2rem;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+
   }
 }
 

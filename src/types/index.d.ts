@@ -12,8 +12,24 @@ declare global {
   export type CategoryCardProps = {
     icon: React.ReactNode;
     label: string;
-    color: `#${string}`
+    color: `#${string}`;
+    type?: "primary" | "secondary";
+    active?: boolean;
   }
+  export type ServiceProps = {
+    id: string;
+    category: string;
+    vendor: string;
+    representative: string;
+    address: string;
+    imageUrl: string;
+  }
+
+  export type ButtonProps = {
+    label: string;
+    onClick?: () => void;
+  }
+
 }
 
 export {};
