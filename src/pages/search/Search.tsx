@@ -5,10 +5,13 @@ import {SERVICES} from "../../lib/services.ts";
 import {CATEGORIES} from "../../lib/categories.tsx";
 import ServiceCard from "../../components/ServiceCard/ServiceCard.tsx";
 import CategoryCard from "../../components/CategoryCard/CategoryCard.tsx";
+import useLocalStorage from "../../hooks/useLocalStorage.ts";
 
 const Search = () => {
 
   const {category} = useParams();
+  const [storedValue, setValue] = useLocalStorage<string[]>("favServices", []);
+
   const categoryObject = CATEGORIES.find((catObj) => slugify(catObj.label) === category);
 
   const filteredServices: ServiceProps[] = SERVICES.filter(service => slugify(service.category) === category);
@@ -46,6 +49,8 @@ const Search = () => {
                 <ServiceCard
                   key={service.id}
                   service={service}
+                  favorite={storedValue.includes(service.id)}
+                  setValue={setValue}
                 />
               ))
               : <h3>No services yet</h3>

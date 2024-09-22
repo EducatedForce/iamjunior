@@ -1,0 +1,56 @@
+@use "../../lib/variables";
+
+.heartCheckBoxContainer {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .redHeartCheckBox {
+    appearance: none;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 85%;
+    height: 85%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+
+    &:checked ~ .heartIcon {
+      & path:is(:first-child) {
+        opacity: 1;
+      }
+
+      & path:is(:last-child) {
+        color: red;
+      }
+    }
+  }
+
+  & .heartIcon {
+    cursor: pointer;
+    stroke-width: 5px;
+    width: 100%;
+    height: 100%;
+
+
+    & path:is(:first-child) {
+      color: red;
+      opacity: 0;
+      transition: all .2s ease-in-out;
+    }
+
+    & path:is(:last-child) {
+      color: variables.$light-gray;
+      transition: all .2s ease-in-out;
+    }
+  }
+}
+
+

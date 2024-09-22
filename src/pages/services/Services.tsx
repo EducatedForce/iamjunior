@@ -5,13 +5,14 @@ import {useSearchParams} from "react-router-dom";
 import {SERVICES} from "../../lib/services.ts";
 import ServiceCard from "../../components/ServiceCard/ServiceCard.tsx";
 import useDebounce from "../../hooks/useDebounce.ts";
+import useLocalStorage from "../../hooks/useLocalStorage.ts";
 
 const Services = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [filter, setFilter] = useState<string>("");
   const [filteredServices, setFilteredServices] = useState<ServiceProps[]>([]);
-
+  const [storedValue, setValue] = useLocalStorage<string[]>("favServices", []);
   const filterParam = searchParams.get("filter");
   const debouncedFilterTerm = useDebounce(filter, 500);
 
@@ -54,7 +55,12 @@ const Services = () => {
           filteredServices.length > 0
             ? filteredServices.map(
               (service: ServiceProps) => (
-                <ServiceCard key={service.id} service={service}/>))
+                <ServiceCard
+                  key={service.id}
+                  service={service}
+                  favorite={storedValue.includes(service.id)}
+                  setValue={setValue}
+                />))
             :
             <p>No services found.</p>
         }

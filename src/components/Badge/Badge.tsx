@@ -1,8 +1,8 @@
 import styles from './Badge.module.scss';
 
-const Badge = ({text}: { text: string }) => {
+const Badge = ({text, onClick}: { text: string, onClick?: () => void }) => {
   return (
-    <span className={styles.badge}>
+    <span className={styles.badge} onClick={onClick}>
       {text}
     </span>
   );

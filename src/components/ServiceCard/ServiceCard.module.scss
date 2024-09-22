@@ -33,6 +33,13 @@ $section-height: 16rem;
     gap: 1rem;
     padding: 1rem;
 
+    & .topContent {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     & > h3 {
       width: 100%;
       font-weight: 800;
