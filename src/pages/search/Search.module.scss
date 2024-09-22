@@ -6,6 +6,14 @@
   gap: 2.5rem;
   margin-bottom: 2rem;
 
+  & {
+    @include mixins.common-container-width;
+  }
+
+  & {
+    @include mixins.main-container;
+  }
+
   & .categoriesContainer {
     display: flex;
     flex-direction: column;
@@ -31,5 +39,12 @@
 
   @media screen and (max-width: variables.$md) {
     padding: 0 1.5rem;
+    flex-direction: column;
+    & .categoriesContainer {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+    }
   }
 }

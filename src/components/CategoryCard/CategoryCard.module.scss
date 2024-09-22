@@ -59,7 +59,7 @@
   }
 
   &.secondary {
-    min-width: 15rem;
+    width: 15rem;
     justify-content: start;
     padding: 1rem 1.5rem;
     border: 2px solid variables.$light-gray;
@@ -95,6 +95,11 @@
     @media screen and (max-width: variables.$sm) {
       width: 100%;
       max-width: 20rem;
+      padding: 0.75rem;
+      justify-content: center;
+      & p {
+        display: none;
+      }
     }
   }
 }

@@ -2,6 +2,16 @@
 @use "../../lib/mixins";
 
 .services {
+
+  & {
+    @include mixins.main-container;
+  }
+
+  & {
+    @include mixins.common-container-width;
+  }
+
+
   & input {
     margin-bottom: 2rem;
     @include mixins.custom-input;
@@ -15,7 +25,7 @@
     @include mixins.card-deck;
   }
 
-  @media screen and (max-width: variables.$md){
+  @media screen and (max-width: variables.$md) {
     padding: 0 1.5rem;
   }
 }

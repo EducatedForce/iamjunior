@@ -4,7 +4,9 @@ import BrandLogo from "../BrandLogo/BrandLogo.tsx";
 const TopBarAuth = () => {
   return (
     <header className={styles.authContainer}>
-      <BrandLogo/>
+      <div className={styles.logoContainer}>
+        <BrandLogo/>
+      </div>
     </header>
   );
 };

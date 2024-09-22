@@ -3,11 +3,21 @@
 
 .aboutUsContainer {
 
+  & {
+    @include mixins.common-container-width;
+  }
+
+  & {
+    @include mixins.main-container;
+  }
+
   & h2 {
     @include mixins.title-text;
   }
 
+
   @media screen and (max-width: variables.$md) {
     padding: 0 1.5rem;
   }
+
 }

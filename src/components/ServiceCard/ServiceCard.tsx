@@ -46,7 +46,7 @@ const ServiceCard = ({service, favorite, setValue}: {
         <h3>{service.vendor}</h3>
         <h4>{service.representative}</h4>
         <p>{service.address}</p>
-        <Button label="Book now" onClick={handleClick}/>
+        <Button onClick={handleClick}>Book now</Button>
       </div>
     </div>
   );

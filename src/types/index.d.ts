@@ -3,10 +3,10 @@ import React from "react";
 declare global {
   export type User = {
     id: string;
-    firstName: string;
-    lastName: string;
+    username: string;
     email: string;
-    isAdmin: boolean;
+    token: string;
+    isAdmin?: boolean;
   }
 
   export type CategoryCardProps = {
@@ -24,12 +24,6 @@ declare global {
     address: string;
     imageUrl: string;
   }
-
-  export type ButtonProps = {
-    label: string;
-    onClick?: () => void;
-  }
-
 }
 
 export {};

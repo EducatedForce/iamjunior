@@ -1,9 +1,10 @@
 import styles from './Login.module.scss';
+import LoginForm from "../../components/LoginForm/LoginForm.tsx";
 
 const Login = () => {
   return (
-    <div className={styles.loginContainer}>
-      Login
+    <div className={styles.authContainer}>
+      <LoginForm/>
     </div>
   );
 };

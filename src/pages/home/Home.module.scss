@@ -1,5 +1,11 @@
 @use "../../lib/mixins";
 
 .mainContainer {
-  @include mixins.main-container;
+  & {
+    @include mixins.common-container-width;
+  }
+
+  & {
+    @include mixins.main-container;
+  }
 }

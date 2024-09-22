@@ -9,9 +9,10 @@ $section-height: 16rem;
   flex-direction: column;
   border-radius: variables.$radius-heavy;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  transition: box-shadow 0.3s ease-in-out,
-  transform 0.3s ease-in-out;
+
+  & {
+    @include mixins.shadow-small;
+  }
 
   & .imageContainer {
     width: 100%;
@@ -65,7 +66,7 @@ $section-height: 16rem;
   }
 
   &:hover {
-    box-shadow: 8px 6px 10px rgba(125, 87, 248, .25);
     transform: translateY(-0.4rem);
+    @include mixins.shadow-large;
   }
 }
