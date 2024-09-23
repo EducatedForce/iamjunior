@@ -1,0 +1,37 @@
+@use "../../lib/variables";
+@use "../../lib/mixins";
+
+.header {
+  width: 100%;
+  border-bottom: 1px solid variables.$light-gray;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include mixins.common-container-width;
+
+  & .loginButton {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    & p{
+      padding: 0.85rem 1rem;
+      border: 1px solid variables.$light-gray;
+      border-radius: variables.$radius;
+      font-weight: 600;
+    }
+    @media screen and (max-width: variables.$md) {
+      margin: auto;
+    }
+  }
+
+  @media screen and (max-width: variables.$md) {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+
+  }
+}
+

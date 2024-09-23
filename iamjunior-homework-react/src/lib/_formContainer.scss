@@ -1,0 +1,58 @@
+@use "../lib/variables";
+@use "../lib/mixins";
+
+.formContainer {
+  background: variables.$white;
+  width: 35rem;
+  margin: auto;
+  padding: 2rem;
+  border-radius: variables.$radius-heavy;
+
+  & .error {
+    margin-top: 1rem;
+    color: #ff3333;
+    text-align: center;
+  }
+
+  & h2 {
+    text-align: center;
+    @include mixins.title-text;
+  }
+
+  & .loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    & button {
+      align-self: start;
+    }
+  }
+
+  & a {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: variables.$text-alt;
+    text-decoration: none;
+    margin-top: 2rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: variables.$sm) {
+      font-size: 0.9rem;
+    }
+  }
+
+  & {
+    @include mixins.shadow-large;
+  }
+
+  @media screen and (max-width: variables.$md) {
+    width: 100%;
+    max-width: 35rem;
+  }
+}

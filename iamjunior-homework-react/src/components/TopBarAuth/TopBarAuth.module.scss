@@ -1,0 +1,21 @@
+@use "../../lib/variables";
+@use "../../lib/mixins";
+
+
+.authContainer {
+  background: variables.$white;
+  border-bottom: 1px solid variables.$light-gray;
+
+  .logoContainer {
+    padding: 2rem 1rem;
+    @include mixins.common-container-width;
+    @media screen and (max-width: variables.$md) {
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+
+}

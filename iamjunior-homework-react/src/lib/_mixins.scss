@@ -1,0 +1,68 @@
+@use "./variables";
+
+/*TYPOGRAPHY*/
+
+@mixin main-container {
+  margin: 5rem auto;
+}
+
+@mixin common-container-width {
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
+  @media screen and (max-width: variables.$md) {
+    width: 100%;
+  }
+}
+
+@mixin title-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+@mixin subtitle-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+@mixin paragraph-text {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+@mixin custom-input {
+  flex: auto;
+  border: 1px solid variables.$light-gray;
+  font-size: 1rem;
+
+  &:focus {
+    outline: 1px solid variables.$primary;
+  }
+}
+
+@mixin card-deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+@mixin truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin shadow-small {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  transition: box-shadow 0.3s ease-in-out,
+  transform 0.3s ease-in-out;
+}
+
+@mixin shadow-large {
+    box-shadow: 8px 6px 10px rgba(125, 87, 248, .25);
+
+}
