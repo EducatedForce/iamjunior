@@ -33,7 +33,7 @@ const TopBar = () => {
     <header className={styles.header}>
       <NavBar/>
       <div className={styles.loginButton}>
-        {loggedIn && <p>{(storedValue as User).username}</p>}
+        {loggedIn && <p>{(storedValue as User).userName}</p>}
         <Button onClick={handleClick}>
           {loggedIn ? "Logout" : "Login / Sign up"}
         </Button>

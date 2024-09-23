@@ -21,7 +21,7 @@ const LoginForm = () => {
   }, [data, error, navigate, loading]);
 
   useEffect(() => {
-    if (Object.keys(storedData).length > 0 && (storedData as User).username) {
+    if (Object.keys(storedData).length > 0 && (storedData as User).userName) {
       navigate(routes.home);
     }
   }, [navigate, storedData]);

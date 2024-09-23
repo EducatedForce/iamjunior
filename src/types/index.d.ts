@@ -1,9 +1,9 @@
 import React from "react";
 
 declare global {
-  export type User = {
+  export interface User {
     id: string;
-    username: string;
+    userName: string;
     email: string;
     token: string;
     isAdmin?: boolean;
