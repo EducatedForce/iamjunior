@@ -1,0 +1,72 @@
+@use "../../lib/variables";
+@use "../../lib/mixins";
+
+$section-height: 16rem;
+
+.serviceCard {
+  width: 16rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: variables.$radius-heavy;
+  overflow: hidden;
+
+  & {
+    @include mixins.shadow-small;
+  }
+
+  & .imageContainer {
+    width: 100%;
+    height: $section-height;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  & .infoContainer {
+    width: 100%;
+    height: $section-height;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    padding: 1rem;
+
+    & .topContent {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    & > h3 {
+      width: 100%;
+      font-weight: 800;
+      font-size: 1.2rem;
+      @include mixins.truncate;
+    }
+
+    & > h4 {
+      width: 100%;
+      color: variables.$text-alt;
+      font-size: 1.2rem;
+      font-weight: 600;
+      @include mixins.truncate;
+    }
+
+    & > p {
+      width: 100%;
+      color: variables.$text-light;
+      font-size: 1.1rem;
+      font-weight: 600;
+      @include mixins.truncate;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-0.4rem);
+    @include mixins.shadow-large;
+  }
+}

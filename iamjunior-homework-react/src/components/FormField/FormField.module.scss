@@ -1,0 +1,35 @@
+@use "../../lib/variables";
+@use "../../lib/mixins";
+@import "../../lib/visuallyHidden";
+
+.formFieldContainer {
+  position: relative;
+
+  & input {
+    width: 100%;
+    border-radius: variables.$radius;
+    padding: 1rem 1.2rem;
+
+    & {
+      @include mixins.custom-input;
+    }
+
+    @media screen and (max-width: variables.$sm) {
+     font-size: 0.9rem;
+      padding: 0.8rem 1rem;
+    }
+
+  }
+
+  & .error {
+    position: absolute;
+    bottom: -1.2rem;
+    left: 0;
+    height: 1rem;
+    margin-top: 0.25rem;
+    color: #ff3333;
+    font-size: 0.85rem;
+  }
+
+}
+
