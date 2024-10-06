@@ -2,15 +2,16 @@
 @use "../../lib/mixins";
 
 .services {
-
-  & {
-    @include mixins.main-container;
-  }
+  position: relative;
 
   & {
     @include mixins.common-container-width;
   }
 
+
+  & {
+    @include mixins.main-container;
+  }
 
   & input {
     margin-bottom: 2rem;

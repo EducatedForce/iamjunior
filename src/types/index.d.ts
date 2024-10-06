@@ -1,29 +1,45 @@
-import React from "react";
-
 declare global {
-  export interface User {
-    id: string;
-    userName: string;
-    email: string;
-    token: string;
-    isAdmin?: boolean;
-  }
+	interface User {
+		id: string;
+		userName: string;
+		email: string;
+		token: string;
+		isAdmin?: boolean;
+	}
 
-  export type CategoryCardProps = {
-    icon: React.ReactNode;
-    label: string;
-    color: `#${string}`;
-    type?: "primary" | "secondary";
-    active?: boolean;
-  }
-  export type ServiceProps = {
-    id: string;
-    category: string;
-    vendor: string;
-    representative: string;
-    address: string;
-    imageUrl: string;
-  }
+	interface Category {
+		_id?: string | number;
+		name: string;
+		backgroundColor: string;
+		iconUrl: string;
+	}
+
+	interface Business {
+		_id: string | number;
+		name: string;
+		description: string;
+		address: string;
+		categoryId: string;
+		contactPerson: string;
+		email: string;
+		images: { url: string }[];
+	}
+
+	interface Booking {
+		_id?: string | number;
+		businessId: number;
+		date: Date;
+		time: string;
+		userEmail: string;
+		userName: string;
+		status: string;
+	}
+
+	interface CategoryCardProps extends Category {
+		type?: "primary" | "secondary";
+		active?: boolean;
+	}
+
+	type BusinessCardProps = Business;
 }
-
 export {};

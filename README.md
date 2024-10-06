@@ -1,4 +1,4 @@
-# Home Services Web App
+# Home Businesses Web App
 
 Web application for displaying home services for users with possibility to book
 these services by registered users.

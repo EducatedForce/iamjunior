@@ -8,4 +8,11 @@
   & {
     @include mixins.main-container;
   }
+
+  .loaderContainer {
+position: relative;
+    width: 10rem;
+    height: 10rem;
+
+  }
 }

@@ -1,64 +1,96 @@
-import {useParams} from "react-router-dom";
-import {slugify} from "../../lib/slugify.ts";
+import { useParams } from "react-router-dom";
+import { slugify } from "../../lib/slugify.ts";
 import styles from "./Search.module.scss";
-import {SERVICES} from "../../lib/services.ts";
-import {CATEGORIES} from "../../lib/categories.tsx";
-import ServiceCard from "../../components/ServiceCard/ServiceCard.tsx";
+import BusinessCardCard from "../../components/BusinessCard/BusinessCardCard.tsx";
 import CategoryCard from "../../components/CategoryCard/CategoryCard.tsx";
 import useLocalStorage from "../../hooks/useLocalStorage.ts";
+import { useFetch } from "../../hooks/useFetch.ts";
+import { apiRoutes } from "../../lib/apiRoutes.ts";
+import Loader from "../../components/Loader/Loader.tsx";
+
+export type FetchedBusinesses = {
+	category: string;
+	businesses: Business[];
+};
 
 const Search = () => {
+	const { category } = useParams<{ category: string }>();
+	const [storedValue, setValue] = useLocalStorage<string[]>("favServices", []);
 
-  const {category} = useParams();
-  const [storedValue, setValue] = useLocalStorage<string[]>("favServices", []);
+	const categoriesFetchResult = useFetch(`${apiRoutes.categories}`);
+	const fetchedCategories = categoriesFetchResult?.data as
+		| Category[]
+		| undefined;
 
-  const categoryObject = CATEGORIES.find((catObj) => slugify(catObj.label) === category);
+	const businessesFetchResult = useFetch(
+		`${apiRoutes.businessesByCategory}/${category}`,
+	);
+	const fetchedBusinesses = businessesFetchResult?.data as
+		| FetchedBusinesses
+		| undefined;
 
-  const filteredServices: ServiceProps[] = SERVICES.filter(service => slugify(service.category) === category);
-
-  return (
-    <div className={styles.searchContainer}>
-      <div>
-        <h2>Categories</h2>
-        <div className={styles.categoriesContainer}>
-          {CATEGORIES.map((cat) => (
-            slugify(cat.label) === category ? <CategoryCard
-                key={cat.label}
-                icon={cat.icon}
-                label={cat.label}
-                color={cat.color}
-                type="secondary"
-                active
-              />
-              : <CategoryCard
-                key={cat.label}
-                icon={cat.icon}
-                label={cat.label}
-                color={cat.color}
-                type="secondary"
-              />
-          ))}
-        </div>
-      </div>
-      <div>
-        {categoryObject ? <h2>{categoryObject.label}</h2> : null}
-        <div className={styles.servicesCards}>
-          {
-            filteredServices.length > 0
-              ? filteredServices.map((service: ServiceProps) => (
-                <ServiceCard
-                  key={service.id}
-                  service={service}
-                  favorite={storedValue.includes(service.id)}
-                  setValue={setValue}
-                />
-              ))
-              : <h3>No services yet</h3>
-          }
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className={styles.searchContainer}>
+			{fetchedCategories && (
+				<>
+					<div>
+						<h2>Categories</h2>
+						<div className={styles.categoriesContainer}>
+							{fetchedCategories.map((cat) =>
+								slugify(cat.name) === category ? (
+									<CategoryCard
+										key={cat._id}
+										iconUrl={cat.iconUrl}
+										name={cat.name}
+										backgroundColor={cat.backgroundColor}
+										type="secondary"
+										active
+									/>
+								) : (
+									<CategoryCard
+										key={cat._id}
+										iconUrl={cat.iconUrl}
+										name={cat.name}
+										backgroundColor={cat.backgroundColor}
+										type="secondary"
+									/>
+								),
+							)}
+						</div>
+					</div>
+					<div>
+						{fetchedBusinesses?.category && (
+							<h2>{fetchedBusinesses?.category}</h2>
+						)}
+						<div className={styles.servicesCards}>
+							{fetchedBusinesses?.businesses &&
+							fetchedBusinesses?.businesses.length > 0 ? (
+								fetchedBusinesses?.businesses.map(
+									(service: BusinessCardProps) => (
+										<BusinessCardCard
+											key={service._id}
+											service={service}
+											favorite={storedValue.includes(`${service._id}`)}
+											setValue={setValue}
+										/>
+									),
+								)
+							) : (
+								<h3>No businesses found</h3>
+							)}
+						</div>
+					</div>
+				</>
+			)}
+			{!categoriesFetchResult.loading &&
+				!businessesFetchResult.loading &&
+				!fetchedCategories &&
+				!fetchedBusinesses && <h2>No data found in database</h2>}
+			{(categoriesFetchResult.loading || businessesFetchResult.loading) && (
+				<Loader />
+			)}
+		</div>
+	);
 };
 
 export default Search;

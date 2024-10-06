@@ -1,36 +1,66 @@
-import {useState} from 'react';
-import {ApiResponse, mockApiCall} from "../lib/mockApiCall.ts";
+import { useState, useEffect } from "react";
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
+// Type for possible states of the hook
+type UseFetchState<T> = {
+	data: T | null;
+	loading: boolean;
+	error: string | null;
+};
+
+// Hook options for configuration (e.g., GET/POST, body, etc.)
+type UseFetchOptions = AxiosRequestConfig;
+
+//Define structure for error response
+type ErrorResponse = {
+	message?: string;
+};
 
 // useFetch Hook
-export const useFetch = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [data, setData] = useState<object | null>(null);
+export const useFetch = <T>(url: string, options?: UseFetchOptions) => {
+	const [state, setState] = useState<UseFetchState<T>>({
+		data: null,
+		loading: true,
+		error: null,
+	});
 
-  const fetchData = async (url: string, method: string, body: object) => {
-    setLoading(true);
-    setError(null);
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				setState((prevState) => ({ ...prevState, loading: true }));
+				const response: AxiosResponse<T> = await axios(url, options);
 
-    if (method) {
-      try {
-        const response: ApiResponse = await mockApiCall(url, body);
-        setData(response);
+				setState({
+					data: response.data,
+					loading: false,
+					error: null,
+				});
+			} catch (error) {
+				if (axios.isAxiosError(error)) {
+					const axiosError = error as AxiosError<ErrorResponse>;
+					setState({
+						data: null,
+						loading: false,
+						error: axiosError.message || "Something went wrong",
+					});
+				} else {
+					setState({
+						data: null,
+						loading: false,
+						error: "Something went wrong",
+					});
+				}
+			}
+		};
+		fetchData().catch((err) => console.error(err));
 
-        // Save user data to localStorage if response is successful
-        if (response.success && response.user) {
-          localStorage.setItem("userServiceApp", JSON.stringify(response.user));
-        } else {
-          setError(response.message || 'An error occurred');
-        }
+		// Cleanup: Cancel the request on unmount to
+		// prevent state update for unmounted component
+		const source = axios.CancelToken.source();
+		return () => {
+			source.cancel("Request cancelled");
+		};
+	}, [options, url]);
 
-      } catch (err) {
-        setError((err as ApiResponse).message || 'An error occurred');
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
-
-  return {fetchData, loading, error, data};
+	return state;
 };
