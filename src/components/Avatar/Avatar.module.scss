@@ -1,0 +1,11 @@
+.avatarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  &:hover {
+    scale: 1.02;
+    filter: grayscale(1);
+  }
+}
