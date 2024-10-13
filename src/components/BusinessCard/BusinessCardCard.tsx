@@ -20,7 +20,7 @@ const BusinessCardCard = ({
 }) => {
 	const navigate = useNavigate();
 
-	const result = useFetch(`${apiRoutes.categories}/${service.categoryId}`);
+	const result = useFetch(`${apiRoutes.categories}/${service.category}`);
 	const category = result?.data as Category;
 
 	const handleClick = () => {

@@ -19,7 +19,7 @@ declare global {
 		name: string;
 		description: string;
 		address: string;
-		categoryId: string;
+		category: string;
 		contactPerson: string;
 		email: string;
 		images: { url: string }[];

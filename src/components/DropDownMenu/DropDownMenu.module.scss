@@ -1,0 +1,61 @@
+@use "../../lib/variables";
+
+.dropDownContainer {
+  position: absolute;
+  min-width: 11rem;
+  max-width: 20rem;
+  background: #fff;
+  top: 3.4rem;
+  right: -3.6rem;
+  border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: variables.$text-dark;
+
+  transition: all .3s ease-in-out;
+      @media screen and (max-width: variables.$md) {
+          transform: translateX(50%);
+      right: 50%;
+    }
+
+  .menuLink {
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & .otherLinks {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  & .account {
+    padding: 1rem;
+    width: 100%;
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  &.containerClosed {
+    overflow: hidden;
+    height: 0;
+  }
+
+  &.containerOpen {
+    overflow: hidden;
+    height: 9rem;
+  }
+
+}

@@ -10,16 +10,11 @@
   align-items: center;
   @include mixins.common-container-width;
 
-  & .loginButton {
+  & .authMenu {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 1rem;
-    & p{
-      padding: 0.85rem 1rem;
-      border: 1px solid variables.$light-gray;
-      border-radius: variables.$radius;
-      font-weight: 600;
-    }
     @media screen and (max-width: variables.$md) {
       margin: auto;
     }

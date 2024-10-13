@@ -1,11 +1,21 @@
+@use "../../lib/variables";
+
 .avatarContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+  color: variables.$white;
+  background: variables.$teal;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
 
   &:hover {
-    scale: 1.02;
-    filter: grayscale(1);
+    transform: scale(1.03);
+    filter: brightness(1.03);
   }
 }
