@@ -1,0 +1,33 @@
+@use "../../lib/variables";
+@use "../../lib/mixins";
+
+.selectContainer {
+  width: 100%;
+  padding: 0.3rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background: variables.$light-gray;
+  border-radius: variables.$radius;
+
+  & span {
+    display: block;
+    min-width: 6rem;
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: variables.$radius;
+    color: variables.$text-light;
+    border: 1px solid transparent;
+
+    &:hover {
+      border: 1px solid variables.$white;
+    }
+
+    &.active {
+      background: variables.$white;
+      color: variables.$text-dark;
+    }
+  }
+}

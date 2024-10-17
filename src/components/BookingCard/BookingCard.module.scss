@@ -1,0 +1,24 @@
+@use "../../lib/variables";
+@use "../../lib/mixins";
+
+.bookingCardContainer {
+  flex: 1;
+  min-width: 20rem;
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: variables.$radius;
+  border: 1px solid variables.$light-gray;
+  @include mixins.shadow-small;
+
+
+  & .bookingInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+  }
+}

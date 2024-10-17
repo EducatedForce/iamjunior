@@ -4,4 +4,5 @@ export const apiRoutes = {
 	businessesByCategory: "http://127.0.0.1:3000/api/businesses/category",
 	login: "http://127.0.0.1:3000/api/login",
 	register: "http://127.0.0.1:3000/api/register",
+	bookings: "http://127.0.0.1:3000/api/bookings/user",
 };

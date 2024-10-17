@@ -28,6 +28,8 @@ declare global {
 	interface Booking {
 		_id?: string | number;
 		businessId: number;
+		businessName: string;
+		categoryName: string;
 		date: Date;
 		time: string;
 		userEmail: string;

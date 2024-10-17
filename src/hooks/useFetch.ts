@@ -12,13 +12,16 @@ type ErrorResponse = {
 
 // useFetch Hook with integrated React Query functionality
 export const useFetch = <T>(
-	url: string,
+	url: string | null,
 	options?: AxiosRequestConfig,
 	queryOptions?: UseQueryOptions<T, ErrorResponse>,
 ): UseQueryResult<T, ErrorResponse> => {
 	return useQuery<T, ErrorResponse>({
 		queryKey: [url, options],
 		queryFn: async () => {
+			if (!url) {
+				return Promise.reject({ message: "No URL provided" } as ErrorResponse);
+			}
 			const response = await axios(url, options);
 			return response.data;
 		},

@@ -1,0 +1,30 @@
+@use "../../lib/variables";
+@use "../../lib/mixins";
+
+.userBookingsContainer {
+  position: relative;
+
+  & {
+    @include mixins.common-container-width;
+  }
+
+  & {
+    @include mixins.main-container;
+  }
+
+  & h2 {
+    margin-bottom: 1rem;
+  }
+
+  & .bookingCardsContainer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: variables.$md) {
+    padding: 0 1.5rem;
+  }
+}
