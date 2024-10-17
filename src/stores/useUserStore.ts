@@ -101,7 +101,12 @@ export const useUserStore = create<UserState>((set) => ({
 			});
 			const { token: accessToken } = response.data;
 			const user = decodeAccessToken(accessToken);
-
+			saveUserToLocalStorage({
+				_id: user._id,
+				userName: user.userName,
+				email: user.email,
+				accessToken: accessToken,
+			});
 			set({
 				_id: user._id,
 				userName: user.userName,

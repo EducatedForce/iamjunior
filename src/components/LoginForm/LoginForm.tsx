@@ -1,39 +1,16 @@
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import styles from "./LoginForm.module.scss";
 import FormField from "../FormField/FormField.tsx";
 import Button from "../Button/Button.tsx";
 import { routes } from "../../lib/routes.ts";
-import useLocalStorage from "../../hooks/useLocalStorage.ts";
+import useAuthRedirect from "../../hooks/useAuthRedirect.ts";
 import { useUserStore } from "../../stores/useUserStore.ts";
 
 const LoginForm = () => {
-	const {
-		userName,
-		email,
-		accessToken,
-		login,
-		isLoading,
-		error,
-		loadUserFromLocalStorage,
-	} = useUserStore();
-	const [storedData] = useLocalStorage("userServiceApp", {});
-	const navigate = useNavigate();
-
-	useEffect(() => {
-		loadUserFromLocalStorage();
-		if (userName && email && accessToken && !error) {
-			navigate(routes.home);
-		}
-	}, [accessToken, email, error, loadUserFromLocalStorage, navigate, userName]);
-
-	useEffect(() => {
-		if (Object.keys(storedData).length > 0 && (storedData as User).userName) {
-			navigate(routes.home);
-		}
-	}, [navigate, storedData]);
+	const { error, isLoading, login } = useUserStore();
+	useAuthRedirect();
 
 	const validationSchema = Yup.object({
 		email: Yup.string()
@@ -54,37 +31,27 @@ const LoginForm = () => {
 				validationSchema={validationSchema}
 				onSubmit={submitHandler}
 			>
-				{({ isSubmitting }) => (
+				{({ isSubmitting, errors }) => (
 					<Form className={styles.loginForm}>
-						<FormField label="email" htmlFor="email" error={{ message: "" }}>
+						<FormField label="email" htmlFor="email" error={errors.email}>
 							<Field
 								id="email"
 								name="email"
 								type="email"
 								placeholder="Enter Email..."
 							/>
-							<ErrorMessage
-								name="email"
-								component="div"
-								className={styles.error}
-							/>
 						</FormField>
 
 						<FormField
 							label="password"
 							htmlFor="password"
-							error={{ message: "" }}
+							error={errors.password}
 						>
 							<Field
 								id="password"
 								name="password"
 								type="password"
 								placeholder="Enter Password..."
-							/>
-							<ErrorMessage
-								name="password"
-								component="div"
-								className={styles.error}
 							/>
 						</FormField>
 
