@@ -24,7 +24,7 @@ const TopBar = () => {
 		}
 	}, [userName, email, accessToken, loadUserFromLocalStorage]);
 
-	const handleAvatarClick = () => {
+	const toggleDropDown = () => {
 		setToggleMenu(!toggleMenu);
 	};
 
@@ -37,8 +37,11 @@ const TopBar = () => {
 			<div className={styles.authMenu}>
 				{loggedIn ? (
 					<div>
-						<Avatar onClick={handleAvatarClick}>{userName.slice(0, 2)}</Avatar>
-						<DropDownMenu toggleMenu={toggleMenu} />
+						<Avatar onClick={toggleDropDown}>{userName.slice(0, 2)}</Avatar>
+						<DropDownMenu
+							toggleMenu={toggleMenu}
+							toggleDropDown={setToggleMenu}
+						/>
 					</div>
 				) : (
 					<Button onClick={handleLoginClick}>Login / Sign up</Button>

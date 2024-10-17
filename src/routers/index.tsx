@@ -8,6 +8,7 @@ import LoginPageLayout from "../layouts/LoginPageLayout.tsx";
 import Login from "../pages/login/Login.tsx";
 import SignUp from "../pages/signup/SignUp.tsx";
 import Search from "../pages/search/Search.tsx";
+import User from "../pages/user/User.tsx";
 
 export const router = createBrowserRouter([
 	{
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
 			{
 				path: `${routes.search}/:category`,
 				element: <Search />,
+			},
+			{
+				path: routes.user,
+				element: <User />,
 			},
 		],
 	},

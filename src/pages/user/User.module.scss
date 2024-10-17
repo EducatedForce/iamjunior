@@ -1,1 +1,39 @@
+@use "../../lib/variables";
+@use "../../lib/mixins";
 
+.userContainer {
+  & {
+    @include mixins.common-container-width;
+  }
+
+  & {
+    @include mixins.main-container;
+  }
+
+  & .userCard {
+    margin: auto;
+    width: 90%;
+    max-width: 32rem;
+    min-height: 20rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: variables.$radius-heavy;
+    background: variables.$primary-light;
+    overflow: hidden;
+    transform: translateY(-0.4rem);
+    @include mixins.shadow-large;
+    & a {
+      padding-top: 1rem;
+      text-decoration: none;
+      color: variables.$primary;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+
+  @media screen and (max-width: variables.$md) {
+    padding: 0 1.5rem;
+  }
+}

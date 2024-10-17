@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { routes } from "../lib/routes";
 import { useUserStore } from "../stores/useUserStore";
 
@@ -8,16 +8,30 @@ const useAuthRedirect = () => {
 	const { userName, email, accessToken, error, loadUserFromLocalStorage } =
 		useUserStore();
 	const navigate = useNavigate();
+	const { state: locationState } = useLocation();
 
 	useEffect(() => {
 		// Load user data from local storage if available
 		loadUserFromLocalStorage();
 
-		// Redirect to home if user is authenticated
+		// If user is authenticated redirect to previous page or home page
 		if (userName && email && accessToken && !error) {
-			navigate(routes.home);
+			const path = locationState?.next;
+			if (path) {
+				navigate(`${path.pathname}${path.search}`);
+			} else {
+				navigate(routes.home);
+			}
 		}
-	}, [userName, email, accessToken, error, loadUserFromLocalStorage, navigate]);
+	}, [
+		userName,
+		email,
+		accessToken,
+		error,
+		loadUserFromLocalStorage,
+		navigate,
+		locationState,
+	]);
 };
 
 export default useAuthRedirect;

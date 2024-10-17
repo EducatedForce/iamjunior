@@ -10,6 +10,7 @@ import { useUserStore } from "../../stores/useUserStore.ts";
 
 const LoginForm = () => {
 	const { error, isLoading, login } = useUserStore();
+
 	useAuthRedirect();
 
 	const validationSchema = Yup.object({
