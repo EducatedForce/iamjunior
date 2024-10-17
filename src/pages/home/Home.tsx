@@ -5,15 +5,13 @@ import { apiRoutes } from "../../lib/apiRoutes.ts";
 import Loader from "../../components/Loader/Loader.tsx";
 
 const Home = () => {
-	const result = useFetch(apiRoutes.categories);
-	const categories = result?.data as Category[];
+	const { data: catData, isLoading } = useFetch(apiRoutes.categories);
+	const categories = catData as Category[];
 	return (
 		<main className={styles.mainContainer}>
-			{result.loading && <Loader />}
+			{isLoading && <Loader />}
 			{categories && <ContentMain categories={categories} />}
-			{!result.loading && !categories && (
-				<h2>No categories were found in DB</h2>
-			)}
+			{!isLoading && !categories && <h2>No categories were found in DB</h2>}
 		</main>
 	);
 };

@@ -7,10 +7,7 @@
   align-items: center;
   justify-content: center;
   background: variables.$primary-light;
-
-  & {
-    @include mixins.main-container;
-  }
+  padding: 5rem 0;
 
   @media screen and (max-width: variables.$md) {
     padding: 0 1.5rem;

@@ -28,10 +28,10 @@ const Businesses = () => {
 		? `${apiRoutes.businessesByCategory}/${debouncedFilterTerm}`
 		: `${apiRoutes.businesses}`;
 
-	const result = useFetch(apiRoute);
+	const { data: businessesData, isLoading } = useFetch(apiRoute);
 	const fetchedBusinesses = debouncedFilterTerm
-		? (result?.data as FetchedBusinesses | undefined)
-		: (result?.data as Business[] | undefined);
+		? (businessesData as FetchedBusinesses | undefined)
+		: (businessesData as Business[] | undefined);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchParams({ filter: e.target.value });
@@ -67,13 +67,13 @@ const Businesses = () => {
 								setValue={setValue}
 							/>
 						))}
-				{!result.loading &&
+				{!isLoading &&
 					(!fetchedBusinesses ||
 						Object.keys(fetchedBusinesses).length === 0) && (
 						<h2>No services found.</h2>
 					)}
 			</section>
-			{result.loading && <Loader />}
+			{isLoading && <Loader />}
 		</div>
 	);
 };

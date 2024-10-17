@@ -17,15 +17,15 @@ const Search = () => {
 	const { category } = useParams<{ category: string }>();
 	const [storedValue, setValue] = useLocalStorage<string[]>("favServices", []);
 
-	const categoriesFetchResult = useFetch(`${apiRoutes.categories}`);
-	const fetchedCategories = categoriesFetchResult?.data as
-		| Category[]
-		| undefined;
+	const { data: categoriesFetchResult, isLoading: isCatLoading } = useFetch(
+		`${apiRoutes.categories}`,
+	);
+	const fetchedCategories = categoriesFetchResult as Category[] | undefined;
 
-	const businessesFetchResult = useFetch(
+	const { data: businessesFetchResult, isLoading: isBLoading } = useFetch(
 		`${apiRoutes.businessesByCategory}/${category}`,
 	);
-	const fetchedBusinesses = businessesFetchResult?.data as
+	const fetchedBusinesses = businessesFetchResult as
 		| FetchedBusinesses
 		| undefined;
 
@@ -75,20 +75,18 @@ const Search = () => {
 										/>
 									),
 								)
-							) : (
+							) : isBLoading ? null : (
 								<h3>No businesses found</h3>
 							)}
 						</div>
 					</div>
 				</>
 			)}
-			{!categoriesFetchResult.loading &&
-				!businessesFetchResult.loading &&
+			{!isCatLoading &&
+				!isBLoading &&
 				!fetchedCategories &&
 				!fetchedBusinesses && <h2>No data found in database</h2>}
-			{(categoriesFetchResult.loading || businessesFetchResult.loading) && (
-				<Loader />
-			)}
+			{(isCatLoading || isBLoading) && <Loader />}
 		</div>
 	);
 };
