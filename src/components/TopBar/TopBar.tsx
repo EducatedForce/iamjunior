@@ -25,7 +25,7 @@ const TopBar = () => {
 	}, [userName, email, accessToken, loadUserFromLocalStorage]);
 
 	const toggleDropDown = () => {
-		setToggleMenu(!toggleMenu);
+		setToggleMenu((prev) => !prev);
 	};
 
 	const handleLoginClick = () => {

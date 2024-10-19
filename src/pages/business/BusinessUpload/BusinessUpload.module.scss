@@ -1,0 +1,22 @@
+@use "../../../lib/variables";
+
+.uploadContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: end;
+  justify-content: center;
+
+  & .contactPerson {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 0.5rem;
+    color: variables.$primary;
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: variables.$md) {
+    align-items: center;
+  }
+}

@@ -13,21 +13,66 @@
     @include mixins.main-container;
   }
 
-  & .content {
+  & .contentTop {
     display: flex;
-    gap: 1rem;
+    align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    @media screen and (max-width: variables.$md) {
+      flex-direction: column;
+    }
+  }
 
-    & .contentLeft {
-      width: 65%;
+  & .contentBottom {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-areas:
+            "desc desc desc desc desc desc booking booking booking"
+            "glr glr glr glr glr glr similar similar similar";
+
+    & .gridDescription {
+      grid-area: desc;
+      margin-right: 2rem;
     }
 
-    & .contentRight {
-      flex: 1;
+    & .gridGallery {
+      grid-area: glr;
+      margin-right: 2rem;
+      @media screen and (max-width: variables.$md) {
+        margin-right: 0;
+      }
+    }
+
+    & .gridBooking {
+      grid-area: booking;
+      justify-self: start;
+      @media screen and (max-width: variables.$md) {
+        justify-self: center;
+        margin-bottom: 2rem;
+      }
+    }
+
+    & .gridSimilar {
+      position: relative;
+      grid-area: similar;
       display: flex;
       flex-direction: column;
       justify-content: start;
       align-items: center;
+      gap: 1.5rem;
+      & h2 {
+        margin-bottom: 2rem;
+      }
+      @media screen and (max-width: variables.$md) {
+        justify-self: center;
+      }
+    }
+
+    @media screen and (max-width: variables.$md) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+            "booking" "desc" "glr" "similar";
     }
   }
 

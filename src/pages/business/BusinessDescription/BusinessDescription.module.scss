@@ -1,7 +1,13 @@
+@use "../../../lib/variables";
+
 .businessDescription {
   margin-bottom: 2rem;
 
   & h2 {
     margin-bottom: 1.5rem;
+  }
+
+  @media screen and (max-width: variables.$md) {
+    text-align: center;
   }
 }

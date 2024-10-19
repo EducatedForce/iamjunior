@@ -1,0 +1,42 @@
+@use "../../../lib/variables";
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 30rem;
+  background: variables.$white;
+  transition: opacity 0.3s ease-in-out;
+  padding: 2rem;
+
+  &.open {
+    animation: slide-in .3s ease-in-out forwards;
+  }
+
+  &.closed {
+    animation: slide-out .3s ease-in-out forwards;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-out {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+}
