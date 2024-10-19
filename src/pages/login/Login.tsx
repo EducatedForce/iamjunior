@@ -1,5 +1,5 @@
 import styles from "./Login.module.scss";
-import LoginForm from "../../components/LoginForm/LoginForm.tsx";
+import LoginForm from "./LoginForm/LoginForm.tsx";
 
 const Login = () => {
 	return (

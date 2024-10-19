@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import styles from "./LoginForm.module.scss";
-import FormField from "../FormField/FormField.tsx";
-import Button from "../Button/Button.tsx";
-import { routes } from "../../lib/routes.ts";
-import useAuthRedirect from "../../hooks/useAuthRedirect.ts";
-import { useUserStore } from "../../stores/useUserStore.ts";
+import FormField from "../../../components/FormField/FormField.tsx";
+import Button from "../../../components/Button/Button.tsx";
+import { routes } from "../../../lib/routes.ts";
+import useAuthRedirect from "../../../hooks/useAuthRedirect.ts";
+import { useUserStore } from "../../../stores/useUserStore.ts";
 
 const LoginForm = () => {
 	const { error, isLoading, login } = useUserStore();

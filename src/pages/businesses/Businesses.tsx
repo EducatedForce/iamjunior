@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Businesses.module.scss";
 import { useSearchParams } from "react-router-dom";
-import BusinessCardCard from "../../components/BusinessCard/BusinessCardCard.tsx";
+import BusinessCard from "../../components/BusinessCard/BusinessCard.tsx";
 import useDebounce from "../../hooks/useDebounce.ts";
 import useLocalStorage from "../../hooks/useLocalStorage.ts";
 import { useFetch } from "../../hooks/useFetch.ts";
@@ -51,7 +51,7 @@ const Businesses = () => {
 			<section className={styles.servicesCards}>
 				{fetchedBusinesses && Array.isArray(fetchedBusinesses)
 					? fetchedBusinesses.map((business: BusinessCardProps) => (
-							<BusinessCardCard
+							<BusinessCard
 								key={business._id}
 								service={business}
 								favorite={storedValue.includes(`${business._id}`)}
@@ -60,7 +60,7 @@ const Businesses = () => {
 						))
 					: fetchedBusinesses?.businesses &&
 						fetchedBusinesses.businesses.map((business: BusinessCardProps) => (
-							<BusinessCardCard
+							<BusinessCard
 								key={business._id}
 								service={business}
 								favorite={storedValue.includes(`${business._id}`)}

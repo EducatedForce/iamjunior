@@ -6,7 +6,7 @@ import { apiRoutes } from "../../lib/apiRoutes.ts";
 import { useUserStore } from "../../stores/useUserStore.ts";
 import useNoAuthRedirect from "../../hooks/useNoAuthRedirect.ts";
 import Loader from "../../components/Loader/Loader.tsx";
-import BookingCard from "../../components/BookingCard/BookingCard.tsx";
+import BookingCard from "./BookingCard/BookingCard.tsx";
 
 export type BookingFilter = "Booked" | "Completed";
 

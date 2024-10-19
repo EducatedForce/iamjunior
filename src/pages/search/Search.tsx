@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { slugify } from "../../lib/slugify.ts";
 import styles from "./Search.module.scss";
-import BusinessCardCard from "../../components/BusinessCard/BusinessCardCard.tsx";
+import BusinessCard from "../../components/BusinessCard/BusinessCard.tsx";
 import CategoryCard from "../../components/CategoryCard/CategoryCard.tsx";
 import useLocalStorage from "../../hooks/useLocalStorage.ts";
 import { useFetch } from "../../hooks/useFetch.ts";
@@ -67,7 +67,7 @@ const Search = () => {
 							fetchedBusinesses?.businesses.length > 0 ? (
 								fetchedBusinesses?.businesses.map(
 									(service: BusinessCardProps) => (
-										<BusinessCardCard
+										<BusinessCard
 											key={service._id}
 											service={service}
 											favorite={storedValue.includes(`${service._id}`)}

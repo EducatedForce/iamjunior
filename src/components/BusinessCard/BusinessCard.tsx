@@ -9,7 +9,7 @@ import { slugify } from "../../lib/slugify.ts";
 import { useFetch } from "../../hooks/useFetch.ts";
 import { apiRoutes } from "../../lib/apiRoutes.ts";
 
-const BusinessCardCard = ({
+const BusinessCard = ({
 	service,
 	favorite,
 	setValue,
@@ -23,8 +23,10 @@ const BusinessCardCard = ({
 	const result = useFetch(`${apiRoutes.categories}/${service.category}`);
 	const category = result?.data as Category;
 
-	const handleClick = () => {
-		navigate(routes.login);
+	const handleClick = (businessId: string | number) => {
+		return () => {
+			navigate(`${routes.businesses}/${businessId}`);
+		};
 	};
 
 	const handleBadgeClick = (slug: string) => {
@@ -55,10 +57,10 @@ const BusinessCardCard = ({
 				<h3>{service.name}</h3>
 				<h4>{service.contactPerson}</h4>
 				<p>{service.address}</p>
-				<Button onClick={handleClick}>Book now</Button>
+				<Button onClick={handleClick(service._id)}>Book now</Button>
 			</div>
 		</div>
 	);
 };
 
-export default BusinessCardCard;
+export default BusinessCard;

@@ -10,6 +10,7 @@ import SignUp from "../pages/signup/SignUp.tsx";
 import Search from "../pages/search/Search.tsx";
 import User from "../pages/user/User.tsx";
 import UserBookings from "../pages/userBookings/UserBookings.tsx";
+import Business from "../pages/business/Business.tsx";
 
 export const router = createBrowserRouter([
 	{
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
 			{
 				path: routes.businesses,
 				element: <Businesses />,
+			},
+			{
+				path: `${routes.businesses}/:businessId`,
+				element: <Business />,
 			},
 			{
 				path: routes.about,
