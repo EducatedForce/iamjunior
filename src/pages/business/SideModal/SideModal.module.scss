@@ -4,8 +4,9 @@
   position: fixed;
   top: 0;
   right: 0;
+  width: 85%;
   height: 100%;
-  width: 30rem;
+  max-width: 30rem;
   background: variables.$white;
   transition: opacity 0.3s ease-in-out;
   padding: 2rem;
@@ -16,6 +17,16 @@
 
   &.closed {
     animation: slide-out .3s ease-in-out forwards;
+  }
+
+  & .calendar {
+    margin-top: 1rem;
+    & .tileActive {
+      background: variables.$primary;
+      color: variables.$white;
+
+
+    }
   }
 
   @keyframes slide-in {
@@ -38,5 +49,8 @@
       transform: translateX(100%);
       opacity: 0;
     }
+  }
+  @media screen and (max-width: variables.$md) {
+    text-align: center;
   }
 }

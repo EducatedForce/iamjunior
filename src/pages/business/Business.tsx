@@ -114,6 +114,7 @@ const Business = () => {
 					isOpen={isModalOpen}
 					closeOverlay={closeOverlay}
 					closeModal={closeModal}
+					businessId={business?._id}
 				/>
 			</Overlay>
 		</div>

@@ -18,7 +18,7 @@ const UserBookings = () => {
 	const { userName, email } = useUserStore();
 
 	const { data: fetchedBookings, isLoading } = useFetch<Booking[]>(
-		email ? `${apiRoutes.bookings}/${email}` : "",
+		email ? `${apiRoutes.userBookings}/${email}` : "",
 	);
 
 	useEffect(() => {
