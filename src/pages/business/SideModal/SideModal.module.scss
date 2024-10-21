@@ -20,12 +20,42 @@
   }
 
   & .calendar {
-    margin-top: 1rem;
+    margin: 1rem 0;
+
     & .tileActive {
       background: variables.$primary;
       color: variables.$white;
+    }
+  }
 
+  & .timeSlots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
 
+    & span {
+      padding: 0.5rem;
+      border-radius: variables.$radius-heavy;
+      border: 1px solid variables.$light-gray;
+      cursor: pointer;
+
+      &.active {
+        background: variables.$primary;
+        color: white;
+      }
+    }
+  }
+
+  & .messages {
+    padding: 1rem;
+
+    & .error {
+      color: variables.$error
+    }
+
+    & .success {
+      color: variables.$success;
     }
   }
 

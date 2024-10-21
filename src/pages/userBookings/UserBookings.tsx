@@ -54,8 +54,8 @@ const UserBookings = () => {
 					{bookings?.map((booking) => (
 						<BookingCard
 							key={booking._id}
-							categoryName={booking.categoryName}
-							businessName={booking.businessName}
+							categoryName={booking.categoryName!}
+							businessName={booking.businessName!}
 							date={booking.date}
 							time={booking.time}
 							status={booking.status}
